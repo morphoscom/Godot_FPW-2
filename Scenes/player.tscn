@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://csfapvkkamx8j"]
+
+[ext_resource type="Script" uid="uid://ddrak1s5etun" path="res://Scripts/Player.cs" id="1_v0iea"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f60y1"]
+lightmap_size_hint = Vector2i(17, 14)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
+
+[node name="Player" type="CharacterBody3D" unique_id=797243026]
+script = ExtResource("1_v0iea")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=907900518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_f60y1")
+
+[node name="CapsuleCollision" type="CollisionShape3D" parent="." unique_id=1329861533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_v0iea")

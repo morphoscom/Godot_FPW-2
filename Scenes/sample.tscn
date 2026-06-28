@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bfvlxa3bydhyy"]
+
+[ext_resource type="PackedScene" uid="uid://bqxa36hkpl1hj" path="res://sample/Mini Arena/Models/GLB format/banner.glb" id="1_dvghh"]
+[ext_resource type="PackedScene" uid="uid://basbm4qaiq6k5" path="res://sample/Mini Arena/Models/GLB format/column.glb" id="2_bdjb6"]
+[ext_resource type="PackedScene" uid="uid://gaivtq4jlu8u" path="res://sample/Mini Arena/Models/GLB format/tree.glb" id="3_uiqwc"]
+[ext_resource type="PackedScene" uid="uid://dp4f8paatagro" path="res://sample/Mini Arena/Models/GLB format/bricks.glb" id="4_dj21v"]
+[ext_resource type="PackedScene" uid="uid://nl2p4gn2t5ke" path="res://sample/Mini Arena/Models/GLB format/statue.glb" id="5_kotgr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5e0t"]
+size = Vector3(0.7922363, 0.41535646, 0.86868286)
+
+[node name="Sample" type="Node3D" unique_id=52217772]
+
+[node name="Banner" parent="." unique_id=877757069 instance=ExtResource("1_dvghh")]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0.735318, 0, 0.295037)
+
+[node name="Column" parent="." unique_id=1875119386 instance=ExtResource("2_bdjb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.264682, 0, 0.295037)
+
+[node name="Tree" parent="." unique_id=456155144 instance=ExtResource("3_uiqwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51468, 0, 0.295037)
+
+[node name="Tree (small)" parent="." unique_id=911039599 instance=ExtResource("3_uiqwc")]
+transform = Transform3D(0.565685, 0, 0.565685, 0, 0.8, 0, -0.565685, 0, 0.565685, -1.76468, 0, 0.795037)
+
+[node name="Statue" parent="." unique_id=1097604812 instance=ExtResource("5_kotgr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73532, 0, 0.295037)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2034386146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1770551644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20765385, 0)
+shape = SubResource("BoxShape3D_i5e0t")
+
+[node name="Bricks" parent="StaticBody3D" unique_id=704313165 instance=ExtResource("4_dj21v")]

@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://baoorjmmtju4a"]
+
+[ext_resource type="Script" uid="uid://dt3k0qxx0vp3c" path="res://Scripts/GameManager.cs" id="1_6l7je"]
+[ext_resource type="PackedScene" uid="uid://csfapvkkamx8j" path="res://Scenes/player.tscn" id="1_52fb6"]
+[ext_resource type="Script" uid="uid://dlx62g6073dp1" path="res://Scripts/Camera.cs" id="2_iacmt"]
+[ext_resource type="Script" uid="uid://dir7r47ybvtqk" path="res://Scripts/UiManager.cs" id="3_x6ack"]
+[ext_resource type="MeshLibrary" uid="uid://cwnfcjj0lpvnw" path="res://mesh_library.meshlib" id="4_6ev3c"]
+[ext_resource type="Texture2D" uid="uid://bssjmwo1qhvkv" path="res://icon.svg" id="4_iacmt"]
+[ext_resource type="PackedScene" uid="uid://bfvlxa3bydhyy" path="res://Scenes/sample.tscn" id="5_maf8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l7je"]
+albedo_color = Color(0.16606057, 0.37890625, 0.03404236, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jv6wh"]
+material = SubResource("StandardMaterial3D_6l7je")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6ack"]
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iacmt"]
+
+[sub_resource type="Sky" id="Sky_6ev3c"]
+sky_material = SubResource("ProceduralSkyMaterial_iacmt")
+
+[sub_resource type="Environment" id="Environment_maf8m"]
+background_mode = 2
+sky = SubResource("Sky_6ev3c")
+volumetric_fog_density = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ev3c"]
+font_size = 64
+
+[sub_resource type="Theme" id="Theme_maf8m"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_huasi"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_m1efj"]
+default_font_size = 32
+
+[node name="GameManager" type="Node" unique_id=1347032883]
+script = ExtResource("1_6l7je")
+
+[node name="World" type="Node" parent="." unique_id=1430921801]
+
+[node name="Ground" type="StaticBody3D" parent="World" unique_id=2132590451]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground" unique_id=2139630650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, 0, 0.014)
+mesh = SubResource("PlaneMesh_jv6wh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground" unique_id=1400900795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+visible = false
+shape = SubResource("BoxShape3D_x6ack")
+
+[node name="Sun" type="DirectionalLight3D" parent="World" unique_id=1239904825]
+transform = Transform3D(1, 0, 0, 0, 0.7660444, 0.6427875, 0, -0.6427875, 0.7660444, 0, 10, 0)
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="World" unique_id=499831509]
+script = ExtResource("2_iacmt")
+CameraOffset = Vector3(0, 0, 2)
+
+[node name="Entity" type="Node" parent="World" unique_id=843057631]
+
+[node name="Player" parent="World/Entity" unique_id=797243026 instance=ExtResource("1_52fb6")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=2098013183]
+environment = SubResource("Environment_maf8m")
+
+[node name="Structures" type="Node" parent="World" unique_id=423179861]
+
+[node name="GridMap" type="GridMap" parent="World/Structures" unique_id=1872292268]
+mesh_library = ExtResource("4_6ev3c")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(12, 65532, 983040, 12, 65533, 983040, 12, 65534, 983040, 12, 65535, 983040, 12, 0, 983040, 12, 1, 983040, 12, 2, 983040, 12, 3, 983040, 11, 65525, 983040, 11, 65529, 983040, 12, 65525, 983040, 12, 65526, 983040, 12, 65527, 983040, 12, 65528, 983040, 12, 65529, 983040)
+}
+
+[node name="Sample" parent="World/Structures" unique_id=52217772 instance=ExtResource("5_maf8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="UIManager" type="Node" parent="." unique_id=1199741543]
+script = ExtResource("3_x6ack")
+
+[node name="MainMenu" type="Control" parent="UIManager" unique_id=292564671]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundColor" type="ColorRect" parent="UIManager/MainMenu" unique_id=293580417]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UIManager/MainMenu" unique_id=175416757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 50
+
+[node name="MainLayout" type="HBoxContainer" parent="UIManager/MainMenu/MarginContainer" unique_id=1583848206]
+layout_mode = 2
+
+[node name="ButtonColumn" type="VBoxContainer" parent="UIManager/MainMenu/MarginContainer/MainLayout" unique_id=695915085]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="GameTitle" type="Label" parent="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn" unique_id=2108126290]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "FPW Project"
+label_settings = SubResource("LabelSettings_6ev3c")
+
+[node name="ButtonSpacing" type="Control" parent="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn" unique_id=285589185]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn" unique_id=256771064]
+layout_mode = 2
+theme = SubResource("Theme_maf8m")
+text = "Play"
+alignment = 0
+
+[node name="SettingButton" type="Button" parent="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn" unique_id=770038194]
+layout_mode = 2
+theme = SubResource("Theme_huasi")
+text = "Setting
+"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn" unique_id=509156036]
+layout_mode = 2
+theme = SubResource("Theme_m1efj")
+text = "Quit
+"
+alignment = 0
+
+[node name="VisualsColumn" type="VBoxContainer" parent="UIManager/MainMenu/MarginContainer/MainLayout" unique_id=646895471]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UIManager/MainMenu/MarginContainer/MainLayout/VisualsColumn" unique_id=1759105302]
+layout_mode = 2
+texture = ExtResource("4_iacmt")
+stretch_mode = 5
+
+[node name="Pause" type="Control" parent="UIManager" unique_id=1738029727]
+visible = false
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="BackgroundColor" type="ColorRect" parent="UIManager/Pause" unique_id=56137382]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UIManager/Pause" unique_id=2127735637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+
+[node name="MainLayout" type="HBoxContainer" parent="UIManager/Pause/MarginContainer" unique_id=1952005288]
+layout_mode = 2
+
+[node name="ButtonColumn" type="VBoxContainer" parent="UIManager/Pause/MarginContainer/MainLayout" unique_id=1535945514]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="GameTitle" type="Label" parent="UIManager/Pause/MarginContainer/MainLayout/ButtonColumn" unique_id=855683730]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "FPW Project"
+label_settings = SubResource("LabelSettings_6ev3c")
+
+[node name="ButtonSpacing" type="Control" parent="UIManager/Pause/MarginContainer/MainLayout/ButtonColumn" unique_id=959936926]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="UIManager/Pause/MarginContainer/MainLayout/ButtonColumn" unique_id=985043187]
+layout_mode = 2
+theme = SubResource("Theme_maf8m")
+text = "Play"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="UIManager/Pause/MarginContainer/MainLayout/ButtonColumn" unique_id=1714507115]
+layout_mode = 2
+theme = SubResource("Theme_m1efj")
+text = "Quit
+"
+alignment = 0
+
+[connection signal="pressed" from="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn/PlayButton" to="UIManager" method="_OnPlayButtonPressed"]
+[connection signal="pressed" from="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn/SettingButton" to="UIManager" method="_OnSettingButtonPressed"]
+[connection signal="pressed" from="UIManager/MainMenu/MarginContainer/MainLayout/ButtonColumn/QuitButton" to="UIManager" method="_OnQuitButtonPressed"]
+[connection signal="pressed" from="UIManager/Pause/MarginContainer/MainLayout/ButtonColumn/PlayButton" to="UIManager" method="_OnPlayButtonPressed"]
+[connection signal="pressed" from="UIManager/Pause/MarginContainer/MainLayout/ButtonColumn/QuitButton" to="UIManager" method="_OnQuitButtonPressed2"]
