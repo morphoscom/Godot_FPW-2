@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://baoorjmmtju4a"]
 
-[ext_resource type="Script" uid="uid://dt3k0qxx0vp3c" path="res://Scripts/GameManager.cs" id="1_6l7je"]
 [ext_resource type="PackedScene" uid="uid://csfapvkkamx8j" path="res://Scenes/player.tscn" id="1_52fb6"]
-[ext_resource type="Script" uid="uid://dlx62g6073dp1" path="res://Scripts/Camera.cs" id="2_iacmt"]
-[ext_resource type="Script" uid="uid://dir7r47ybvtqk" path="res://Scripts/UiManager.cs" id="3_x6ack"]
 [ext_resource type="MeshLibrary" uid="uid://cwnfcjj0lpvnw" path="res://mesh_library.meshlib" id="4_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://bssjmwo1qhvkv" path="res://icon.svg" id="4_iacmt"]
 [ext_resource type="PackedScene" uid="uid://bfvlxa3bydhyy" path="res://Scenes/sample.tscn" id="5_maf8m"]
@@ -41,7 +38,6 @@ default_font_size = 32
 default_font_size = 32
 
 [node name="GameManager" type="Node" unique_id=1347032883]
-script = ExtResource("1_6l7je")
 
 [node name="World" type="Node" parent="." unique_id=1430921801]
 
@@ -61,12 +57,10 @@ transform = Transform3D(1, 0, 0, 0, 0.7660444, 0.6427875, 0, -0.6427875, 0.76604
 shadow_enabled = true
 
 [node name="Camera" type="Camera3D" parent="World" unique_id=499831509]
-script = ExtResource("2_iacmt")
-CameraOffset = Vector3(0, 0, 2)
 
-[node name="Entity" type="Node" parent="World" unique_id=843057631]
+[node name="Entitys" type="Node" parent="World" unique_id=843057631]
 
-[node name="Player" parent="World/Entity" unique_id=797243026 instance=ExtResource("1_52fb6")]
+[node name="Player" parent="World/Entitys" unique_id=797243026 instance=ExtResource("1_52fb6")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=2098013183]
 environment = SubResource("Environment_maf8m")
@@ -84,7 +78,6 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
 [node name="UIManager" type="Node" parent="." unique_id=1199741543]
-script = ExtResource("3_x6ack")
 
 [node name="MainMenu" type="Control" parent="UIManager" unique_id=292564671]
 visible = false

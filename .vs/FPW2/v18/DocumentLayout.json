@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "D:\\GodotProjects\\fpw-2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8EEC21F5-45BA-48BF-B758-8E4AB04EC58D}|FPW2.csproj|d:\\godotprojects\\fpw-2\\scripts\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8EEC21F5-45BA-48BF-B758-8E4AB04EC58D}|FPW2.csproj|solutionrelative:scripts\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8EEC21F5-45BA-48BF-B758-8E4AB04EC58D}|FPW2.csproj|d:\\godotprojects\\fpw-2\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8EEC21F5-45BA-48BF-B758-8E4AB04EC58D}|FPW2.csproj|solutionrelative:scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,20 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Camera.cs",
-              "DocumentMoniker": "D:\\GodotProjects\\fpw-2\\Scripts\\Camera.cs",
-              "RelativeDocumentMoniker": "Scripts\\Camera.cs",
-              "ToolTip": "D:\\GodotProjects\\fpw-2\\Scripts\\Camera.cs",
-              "RelativeToolTip": "Scripts\\Camera.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAuwFsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-23T17:24:45.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "D:\\GodotProjects\\fpw-2\\Scripts\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\Player.cs",
@@ -71,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "UiManager.cs",
               "DocumentMoniker": "D:\\GodotProjects\\fpw-2\\Scripts\\UiManager.cs",
               "RelativeDocumentMoniker": "Scripts\\UiManager.cs",
@@ -83,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\GodotProjects\\fpw-2\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Scripts\\GameManager.cs",
@@ -91,8 +74,7 @@
               "RelativeToolTip": "Scripts\\GameManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-21T15:01:28.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-21T15:01:28.104Z"
             }
           ]
         }

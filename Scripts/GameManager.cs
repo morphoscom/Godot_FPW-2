@@ -3,67 +3,29 @@ using System;
 
 public partial class GameManager : Node
 {
-
-    public enum GameStates
+    public GameState CurrentState { get; private set; }
+    
+    public void ChangeState(GameState newState)
     {
-        Init,
-        Main_menu,
-        Gameplay,
-        Pause
-    }
-    public GameStates CurrentGameState { get; private set; } = GameStates.Init;
+        CurrentState?.Exit();
 
-    [Signal]
-    public delegate void GameStateChangeEventHandler(GameStates newState);
+        CurrentState = newState;
 
-    public void ChangeGameState(GameStates newState)
-    {
-        EmitSignal(SignalName.GameStateChange, Variant.From(newState));
-        /*
-        //out
-        switch (_currentGameState)
-        {
-            case GameState.Init:
-                break;
-            case GameState.Main_menu:
-                //
-                break;
-            case GameState.Gameplay:
-                //
-                break;
-            case GameState.Pause:
-                Engine.TimeScale = 1.0f;
-                _currentGameState = state;
-                break;
-        }
-        */
-        //in
-        switch (newState)
-        {
-            case GameStates.Init:
-                Engine.TimeScale = 0.0f;
-                CurrentGameState = newState;
-                break;
-            case GameStates.Main_menu:
-                Engine.TimeScale = 0.0f;
-                CurrentGameState = newState;
-                break;
-            case GameStates.Gameplay:
-                Engine.TimeScale = 1.0f;
-                CurrentGameState = newState;
-                break;
-            case GameStates.Pause:
-                Engine.TimeScale = 0.0f;
-                CurrentGameState = newState;
-                break;
-        }
+        CurrentState.Enter();
     }
 
     public override void _Ready()
     {
-        ChangeGameState(GameStates.Main_menu);
+        ChangeState(new MenuState(this));
     }
 
+    public override void _Process(double delta)
+    {
+        CurrentState?.Update();
+    }
 
-
+    public override void _PhysicsProcess(double delta)
+    {
+        CurrentState?.PhysicsUpdate(delta);
+    }
 }
